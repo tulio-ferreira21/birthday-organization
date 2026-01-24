@@ -2,7 +2,10 @@ import { Cousts, Quantity } from "../UI/Functions/functions";
 import styles from "./home.module.css"
 import { Link } from "react-router-dom";
 export default function Home() {
-    const qtd = JSON.parse(localStorage.getItem('convidados')).length
+    const convidadosData = localStorage.getItem('convidados');
+
+    const convidadosQuantity = convidadosData ? JSON.parse(convidadosData) : []
+    const qtd = Array.isArray(convidadosQuantity) ? convidadosQuantity.length : 0;
 
     return (
         <div className={styles.containerParent}>
