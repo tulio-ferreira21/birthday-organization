@@ -1,4 +1,4 @@
-import { calculateTotal, Cousts, Quantity } from "../UI/Functions/functions";
+import { calculateTotal,Quantity } from "../UI/Functions/functions";
 import styles from "./home.module.css"
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react"
