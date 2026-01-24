@@ -1,7 +1,7 @@
 import styles from "./css/listitems.module.css"
-export function ListItems({ title, data, setData }) {
+export function ListItems({ item, title, data, setData }) {
     function ClearTable() {
-        localStorage.clear()
+        localStorage.removeItem(item)
         setData([])
     }
     return (

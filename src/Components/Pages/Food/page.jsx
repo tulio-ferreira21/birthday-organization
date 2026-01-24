@@ -57,7 +57,7 @@ export default function Foods() {
                     fechar={() => setShowModal(false)}
                 />
             )}
-            {<ListItems title={"Comidas"} data={foods} setData={setFoods} />}
+            {<ListItems title={"Comidas"} data={foods} setData={setFoods} item={"comidas"} />}
         </>
     )
 }

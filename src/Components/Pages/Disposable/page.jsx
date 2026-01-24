@@ -57,7 +57,7 @@ export default function Disposables() {
                     fechar={() => setShowModal(false)}
                 />
             )}
-            {<ListItems title={"Descartáveis"} data={disposables} setData={setDisposables} />}
+            {<ListItems title={"Descartáveis"} data={disposables} setData={setDisposables} item={"descartaveis"} />}
         </>
     )
 }

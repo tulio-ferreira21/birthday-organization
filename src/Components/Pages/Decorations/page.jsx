@@ -57,7 +57,7 @@ export default function Decorations() {
                     fechar={() => setShowModal(false)}
                 />
             )}
-            {<ListItems title={"Decorações"} data={decorations} setData={setDecorations} />}
+            {<ListItems title={"Decorações"} data={decorations} setData={setDecorations} item={"decoracao"} />}
         </>
     )
 }

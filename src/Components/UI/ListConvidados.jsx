@@ -1,7 +1,7 @@
 import styles from "./css/listitems.module.css"
 export function ListConvidados({ title, data, setData }) {
     function ClearTable() {
-        localStorage.clear()
+        localStorage.removeItem('convidados')
         setData([])
     }
     return (
