@@ -1,4 +1,4 @@
-import { calculateTotal,Quantity } from "../UI/Functions/functions";
+import { calculateTotal, Quantity } from "../UI/Functions/functions";
 import styles from "./home.module.css"
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react"
@@ -15,7 +15,7 @@ export default function Home() {
 
     useEffect(() => {
         setValorTotal(Number(totalComidas) + Number(totalDecoracao) + Number(totalDescartaveis))
-    }, [])
+    }, [totalComidas, totalDecoracao, totalDescartaveis])
     return (
         <div className={styles.containerParent}>
             <div className={styles.containerWrapper}>
@@ -48,7 +48,14 @@ export default function Home() {
                 <Link to="/custos" className={styles.link}>
                     <div className={styles.card}>
                         <h3>Total de Custos</h3>
-                        {valortotal === 0 ? "Nenhum valor informado" : "R$" + valortotal.toLocaleString()}
+                        {valortotal === 0
+                            ? "Nenhum valor informado"
+                            : valortotal.toLocaleString("pt-BR", {
+                                style: "currency",
+                                currency: "BRL"
+                            })
+                        }
+
                     </div>
                 </Link>
             </div>
