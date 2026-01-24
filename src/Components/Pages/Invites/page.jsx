@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import { ListConvidados } from "../../UI/ListConvidados";
 import { AddConvidadoModal } from "../../UI/AddConvidado";
-import "./invite.css"
+import { Timer } from '../../UI/Functions/functions'
+import "../CSS/list.css"
 export default function Invites() {
     const [nomeConvidado, setConvidadoNome] = useState('')
-    const [convidados, setConvidados] = useState(()=>JSON.parse(localStorage.getItem('convidados')) || 
-    []);
+    const [convidados, setConvidados] = useState(() => JSON.parse(localStorage.getItem('convidados')) ||
+        []);
     const [error, setError] = useState('');
     const [success, setSucess] = useState('');
     const [showModal, setShowModal] = useState(false);
@@ -15,11 +16,6 @@ export default function Invites() {
         localStorage.setItem('convidados', JSON.stringify(convidados))
     }, [convidados])
 
-    function Timer(setState) {
-        setTimeout(() => {
-            setState('');
-        }, 3000)
-    }
     function handleAdd() {
         if (!nomeConvidado) {
             setError("Informe o nome do convidado");
@@ -56,4 +52,3 @@ export default function Invites() {
         </>
     )
 }
-

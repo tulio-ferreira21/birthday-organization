@@ -1,12 +1,21 @@
-import { Cousts, Quantity } from "../UI/Functions/functions";
+import { calculateTotal, Cousts, Quantity } from "../UI/Functions/functions";
 import styles from "./home.module.css"
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react"
 export default function Home() {
     const convidadosData = localStorage.getItem('convidados');
-
+    const totalComidas = calculateTotal("comidas") || 0
+    const totalDecoracao = calculateTotal("decoracao") || 0;
+    const totalDescartaveis = calculateTotal("descartaveis") || 0
     const convidadosQuantity = convidadosData ? JSON.parse(convidadosData) : []
     const qtd = Array.isArray(convidadosQuantity) ? convidadosQuantity.length : 0;
+    console.log(JSON.parse(localStorage.getItem("comidas")))
+    console.log(totalComidas, totalDecoracao, totalDescartaveis);
+    const [valortotal, setValorTotal] = useState(0)
 
+    useEffect(() => {
+        setValorTotal(Number(totalComidas) + Number(totalDecoracao) + Number(totalDescartaveis))
+    }, [])
     return (
         <div className={styles.containerParent}>
             <div className={styles.containerWrapper}>
@@ -39,7 +48,7 @@ export default function Home() {
                 <Link to="/custos" className={styles.link}>
                     <div className={styles.card}>
                         <h3>Total de Custos</h3>
-                        <Cousts dinheiro={0} />
+                        {valortotal === 0 ? "Nenhum valor informado" : "R$" + valortotal.toLocaleString()}
                     </div>
                 </Link>
             </div>

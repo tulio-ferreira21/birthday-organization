@@ -6,12 +6,11 @@ import Disposable from "../Pages/Disposable/page";
 import Invites from "../Pages/Invites/page";
 const AppRouter = () => (
     <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="list/decoracao" element={<Decorations />}></Route>
-        <Route path="list/descartaveis" element={<Disposable />}></Route>
+        <Route path="/" element={<Home />} />
+        <Route path="list/decoracao" element={<Decorations />} />
+        <Route path="list/descartaveis" element={<Disposable />} />
         <Route path="list/comida" element={<Foods />}></Route>
-        <Route path="list/convidados" element={<Invites />}></Route>
-        <Route path="/custos"></Route>
+        <Route path="list/convidados" element={<Invites />} />
     </Routes>
 )
 export default AppRouter;

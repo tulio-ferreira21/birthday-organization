@@ -1,5 +1,9 @@
 import styles from "./css/listitems.module.css"
-export function ListItems({ title, data }) {
+export function ListItems({ title, data, setData }) {
+    function ClearTable() {
+        localStorage.clear()
+        setData([])
+    }
     return (
         <div className={styles.wrapper}>
             <table className={styles.table}>
@@ -12,22 +16,39 @@ export function ListItems({ title, data }) {
                         </th>
                     </tr>
                 </thead>
-                {data ? data.map(i => (
-                    <tbody className={styles.tbody}>
+                <tbody className={styles.tbody}>
+                    {data.length > 0 ? data.map(i => (
                         <tr className={styles.tr}>
-                            <td className={styles.td}>{i.name}</td>
-                            <td className={styles.td}>{i.qtd}</td>
-                            <td className={styles.td}>{i.price}</td>
+                            <td className={styles.td}>{i.nome}</td>
+                            <td className={styles.td}>{i.quantidade}</td>
+                            <td className={styles.td}>R${i.preco}</td>
+                            <td className={styles.td}>Total: R${(i.preco * i.quantidade).toFixed(2)}</td>
                         </tr>
-                    </tbody>
 
 
-                ))
-                    :
-                    "Nenhum item cadastrado"
-                }
+                    ))
+                        :
+                        <tr>
+                            <td>
+                                Nenhum(a) Item Cadastrado
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td><strong>Total: </strong> R${data.reduce((total, food)=>{
+                            return (total + food.preco * food.quantidade)
+                        }, 0).toLocaleString()}</td>
+                    </tr>
+                </tbody>
+                {data.length > 0 && (
+                    <div className={styles.removeAll}>
+                        <button className="btn btn-warning" onClick={ClearTable}>
+                            Remover {data.length} Alimento(s)
+                        </button>
+                    </div>
+                )}
             </table>
-        </div>
+        </div >
 
     )
 }
