@@ -1,0 +1,18 @@
+
+:root {
+    --color-bg: #e9230dc9;
+    --color-primary: #FAA49A;
+    --color-text: #c4391d;
+    --fundo: #FFE4EC;
+    --card: #FFF0F5;
+    --borda: #F7B2C4;
+    --sombra: rgba(230, 57, 70, 0.15);
+
+    --card-secondary: #eec9d2;
+
+    --btn-primary:  #E63946;
+    --text-primary: #fff;
+    --btn-secondary:#F7B2C4;
+    --text-secondary: #3A0D1A;
+
+}

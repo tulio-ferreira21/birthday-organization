@@ -1,0 +1,104 @@
+@import "../../../css/variables.css";
+
+.add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    max-width: 300px;
+    width: 100%;
+    padding: 1rem;
+    background-color: var(--card);
+    border-radius: 20px;
+    box-shadow: 0px 4px 8px var(--sombra);
+    border: 1px solid var(--borda);
+    max-width: 1000px;
+
+    animation: scaleIn 0.2s ease;
+}
+
+
+.add input {
+    padding: 0.7rem;
+    border: 1px solid #585858;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    font-size: 16px;
+
+}
+
+.button-add {
+    position: fixed;
+    right: 0.5rem;
+    bottom: 1rem;
+}
+
+.button-add button {
+    background-color: var(--color-bg);
+    padding: 1rem;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #ffff;
+    border: var(--borda);
+    border: 1px solid var(--borda);
+    box-shadow: 2px 4px 8px var(--sombra);
+    transition: 0.3s ease;
+}
+
+.button-add button:hover {
+    background-color: var(--btn-primary);
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+}
+
+.btns #add {
+    background-color: var(--btn-primary);
+    color: var(--text-primary);
+    padding: 0.8rem;
+    border-radius: 12px;
+    font-size: 18px;
+    border: var(--borda);
+    max-width: 200px;
+    width: 100%;
+}
+
+.btns #cancel {
+    background-color: var(--btn-secondary);
+    color: var(--text-secondary);
+    padding: 0.8rem;
+    border-radius: 12px;
+    font-size: 18px;
+    border: var(--borda);
+    max-width: 200px;
+    width: 100%;
+}
+
+.overlay {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    pointer-events: all;
+    background-color: #00000062;
+}
+
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

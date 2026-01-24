@@ -1,0 +1,77 @@
+@import "../../css/variables.css";
+
+.link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.containerParent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+}
+
+.lists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.containerList {
+    background-color: var(--card);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px var(--sombra);
+    border: 1px solid var(--borda);
+    transition: 0.3s ease;
+}
+
+.containerWrapper {
+    max-width: 1800px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    background-color: var(--card);
+    color: var(--text-card);
+    border: 1px solid var(--borda);
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 8px var(--sombra);
+    transition: 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.cardsList {
+    background-color: var(--card-secondary);
+    color: var(--text-card);
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 4px 8px var(--sombra);
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: scale(1.01);
+    box-shadow: 0px 0px 12px var(--sombra);
+}
+
+.cardsList:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 12px var(--sombra);
+}
+
+.containerList:hover {
+    box-shadow: 0px 0px 20px var(--sombra);
+}
