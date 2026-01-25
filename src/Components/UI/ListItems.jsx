@@ -1,5 +1,11 @@
+import { ConfirmDialog } from "./ConfirmDialog";
 import styles from "./css/listitems.module.css"
+import { useState } from "react";
 export function ListItems({ item, title, data, setData }) {
+    const [confirmDialog, setConfirmDialog] = useState(false)
+
+    const [index, setIndex] = ([]);
+    const [nameItem, setNameItem] = ('')
     function ClearTable() {
         localStorage.removeItem(item)
         setData([])
@@ -8,9 +14,19 @@ export function ListItems({ item, title, data, setData }) {
         const newArray = data.filter((_, i) => i !== index);
         setData(newArray);
         localStorage.setItem(item, JSON.stringify(newArray));
+        setConfirmDialog(false)
     }
+
     return (
         <div className={styles.wrapper}>
+            {confirmDialog && (
+                <ConfirmDialog
+                    nomeItem={nameItem}
+                    nomeLista={title}
+                    confirmar={() => removeItem(index)}
+                    fechar={() => setConfirmDialog(false)}
+                />
+            )}
             <table className={styles.table}>
                 <thead>
                     <tr>
@@ -29,11 +45,14 @@ export function ListItems({ item, title, data, setData }) {
                             <td className={styles.td}>R${i.preco}</td>
                             <td className={styles.td}>R${(i.preco * i.quantidade).toFixed(2)}</td>
                             <td className={styles.td}>
-                                <button className="btn btn-danger" onClick={()=>removeItem(index)}>Remover</button>
+                                <button className="btn btn-danger" onClick={() => {
+                                    setIndex(index)
+                                    setNameItem(i.nome)
+                                    setConfirmDialog(true)
+                                }}
+                                >Remover</button>
                             </td>
                         </tr>
-
-
                     ))
                         :
                         <tr>

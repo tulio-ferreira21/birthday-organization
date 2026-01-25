@@ -5,7 +5,7 @@ import { AddItensModal } from "../../UI/AddItems";
 
 import "../CSS/list.css"
 export default function Foods() {
-    const [foods, setFoods] = useState(()=>JSON.parse(localStorage.getItem('comidas')) ||   []);
+    const [foods, setFoods] = useState(() => JSON.parse(localStorage.getItem('comidas')) || []);
 
     const [nome, setNome] = useState('');
     const [preco, setPreco] = useState('');
@@ -31,6 +31,11 @@ export default function Foods() {
             preco,
             quantidade
         }])
+
+
+        setNome('')
+        setPreco('')
+        setQuantidade('')
     }
     return (
         <>

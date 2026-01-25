@@ -31,6 +31,10 @@ export default function Decorations() {
             preco,
             quantidade
         }])
+
+        setNome('')
+        setPreco('')
+        setQuantidade('')
     }
     return (
         <>

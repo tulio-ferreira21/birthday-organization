@@ -31,6 +31,11 @@ export default function Disposables() {
             preco,
             quantidade
         }])
+
+
+        setNome('')
+        setPreco('')
+        setQuantidade('')
     }
     return (
         <>

@@ -1,5 +1,10 @@
 import styles from "./css/listitems.module.css"
+import { ConfirmDialog } from "./ConfirmDialog";
+import { useState } from "react"
 export function ListConvidados({ title, data, setData }) {
+    const [confirmDialog, setConfirmDialog] = useState(false)
+    const [index, setIndex] = useState([]);
+    const [nomeConvidado, setNomeConvidado] = useState('')
     function ClearTable() {
         localStorage.removeItem('convidados')
         setData([])
@@ -8,10 +13,19 @@ export function ListConvidados({ title, data, setData }) {
         const newArray = data.filter((_, i) => i !== index);
         setData(newArray);
         localStorage.setItem("convidados", JSON.stringify(newArray));
+        setConfirmDialog(false)
     }
 
     return (
         <div className={styles.wrapper}>
+            {confirmDialog && (
+                <ConfirmDialog
+                    nomeItem={nomeConvidado}
+                    nomeLista={title}
+                    confirmar={() => removeItem(index)}
+                    fechar={() => setConfirmDialog(false)}
+                />
+            )}
             <table className={styles.table}>
                 <thead>
                     <tr>
@@ -31,7 +45,11 @@ export function ListConvidados({ title, data, setData }) {
                                 </td>
                                 <td>
                                     <div className="btns">
-                                        <button className="btn btn-danger" onClick={() => removeItem(index)}>
+                                        <button className="btn btn-danger" onClick={() => {
+                                            setNomeConvidado(i.nomeConvidado)
+                                            setIndex(index)
+                                            setConfirmDialog(true)
+                                        }}>
                                             <b>Remover</b>
                                         </button>
                                     </div>
