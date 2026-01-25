@@ -5,6 +5,7 @@ export function ListConvidados({ title, data, setData }) {
     const [confirmDialog, setConfirmDialog] = useState(false)
     const [index, setIndex] = useState([]);
     const [nomeConvidado, setNomeConvidado] = useState('')
+    const [action, setAction] = useState('')
     function ClearTable() {
         localStorage.removeItem('convidados')
         setData([])
@@ -22,7 +23,13 @@ export function ListConvidados({ title, data, setData }) {
                 <ConfirmDialog
                     nomeItem={nomeConvidado}
                     nomeLista={title}
-                    confirmar={() => removeItem(index)}
+                    confirmar={() => {
+                        if (action === 'all') {
+                            ClearTable()
+                        } else if (action === "one") {
+                            removeItem(index)
+                        }
+                    }}
                     fechar={() => setConfirmDialog(false)}
                 />
             )}
@@ -46,6 +53,7 @@ export function ListConvidados({ title, data, setData }) {
                                 <td>
                                     <div className="btns">
                                         <button className="btn btn-danger" onClick={() => {
+                                            setAction("one")
                                             setNomeConvidado(i.nomeConvidado)
                                             setIndex(index)
                                             setConfirmDialog(true)
@@ -67,7 +75,11 @@ export function ListConvidados({ title, data, setData }) {
                 </tbody>
                 {data.length > 0 && (
                     <div className={styles.removeAll}>
-                        <button className="btn btn-warning" onClick={ClearTable}>
+                        <button className="btn btn-warning" onClick={()=>{
+                            setAction('all')
+                            setNomeConvidado('Todos os convidados')
+                            setConfirmDialog(true)
+                        }}>
                             Remover {data.length} convidado(s)
                         </button>
                     </div>

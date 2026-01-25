@@ -4,8 +4,9 @@ import { useState } from "react";
 export function ListItems({ item, title, data, setData }) {
     const [confirmDialog, setConfirmDialog] = useState(false)
 
-    const [index, setIndex] = ([]);
-    const [nameItem, setNameItem] = ('')
+    const [index, setIndex] = useState([]);
+    const [nameItem, setNameItem] = useState('')
+    const [action, setAction] = useState('')
     function ClearTable() {
         localStorage.removeItem(item)
         setData([])
@@ -23,7 +24,13 @@ export function ListItems({ item, title, data, setData }) {
                 <ConfirmDialog
                     nomeItem={nameItem}
                     nomeLista={title}
-                    confirmar={() => removeItem(index)}
+                    confirmar={() => {
+                        if (action === 'all') {
+                            ClearTable()
+                        } else if (action === "one") {
+                            removeItem(index)
+                        }
+                    }}
                     fechar={() => setConfirmDialog(false)}
                 />
             )}
@@ -46,6 +53,7 @@ export function ListItems({ item, title, data, setData }) {
                             <td className={styles.td}>R${(i.preco * i.quantidade).toFixed(2)}</td>
                             <td className={styles.td}>
                                 <button className="btn btn-danger" onClick={() => {
+                                    setAction('one')
                                     setIndex(index)
                                     setNameItem(i.nome)
                                     setConfirmDialog(true)
@@ -69,7 +77,11 @@ export function ListItems({ item, title, data, setData }) {
                 </tbody>
                 {data.length > 0 && (
                     <div className={styles.removeAll}>
-                        <button className="btn btn-warning" onClick={ClearTable}>
+                        <button className="btn btn-warning" onClick={() => {
+                            setAction("all")
+                            setNameItem("Todos itens")
+                            setConfirmDialog(true)
+                        }}>
                             Remover {data.length} Alimento(s)
                         </button>
                     </div>
