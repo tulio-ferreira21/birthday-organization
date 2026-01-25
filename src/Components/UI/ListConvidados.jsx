@@ -4,6 +4,12 @@ export function ListConvidados({ title, data, setData }) {
         localStorage.removeItem('convidados')
         setData([])
     }
+    function removeItem(index) {
+        const newArray = data.filter((_, i) => i !== index);
+        setData(newArray);
+        localStorage.setItem("convidados", JSON.stringify(newArray));
+    }
+
     return (
         <div className={styles.wrapper}>
             <table className={styles.table}>
@@ -25,11 +31,7 @@ export function ListConvidados({ title, data, setData }) {
                                 </td>
                                 <td>
                                     <div className="btns">
-                                        <button className="btn btn-success">
-                                            <b>Editar</b>
-                                        </button>
-
-                                        <button className="btn btn-danger">
+                                        <button className="btn btn-danger" onClick={() => removeItem(index)}>
                                             <b>Remover</b>
                                         </button>
                                     </div>

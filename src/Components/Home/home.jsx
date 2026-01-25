@@ -7,10 +7,9 @@ export default function Home() {
     const totalComidas = calculateTotal("comidas") || 0
     const totalDecoracao = calculateTotal("decoracao") || 0;
     const totalDescartaveis = calculateTotal("descartaveis") || 0
+
     const convidadosQuantity = convidadosData ? JSON.parse(convidadosData) : []
     const qtd = Array.isArray(convidadosQuantity) ? convidadosQuantity.length : 0;
-    console.log(JSON.parse(localStorage.getItem("comidas")))
-    console.log(totalComidas, totalDecoracao, totalDescartaveis);
     const [valortotal, setValorTotal] = useState(0)
 
     useEffect(() => {

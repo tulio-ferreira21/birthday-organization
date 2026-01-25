@@ -25,6 +25,7 @@ export default function Invites() {
         setSucess(`Usuário ${nomeConvidado} adicionado`);
         Timer(setSucess)
         setConvidados(prev => [...prev, { nomeConvidado }])
+        setConvidadoNome('')
     }
 
     return (

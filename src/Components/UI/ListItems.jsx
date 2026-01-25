@@ -4,6 +4,11 @@ export function ListItems({ item, title, data, setData }) {
         localStorage.removeItem(item)
         setData([])
     }
+    function removeItem(index) {
+        const newArray = data.filter((_, i) => i !== index);
+        setData(newArray);
+        localStorage.setItem(item, JSON.stringify(newArray));
+    }
     return (
         <div className={styles.wrapper}>
             <table className={styles.table}>
@@ -17,12 +22,15 @@ export function ListItems({ item, title, data, setData }) {
                     </tr>
                 </thead>
                 <tbody className={styles.tbody}>
-                    {data.length > 0 ? data.map(i => (
-                        <tr className={styles.tr}>
+                    {data.length > 0 ? data.map((i, index) => (
+                        <tr className={styles.tr} key={index}>
                             <td className={styles.td}>{i.nome}</td>
                             <td className={styles.td}>{i.quantidade}</td>
                             <td className={styles.td}>R${i.preco}</td>
-                            <td className={styles.td}>Total: R${(i.preco * i.quantidade).toFixed(2)}</td>
+                            <td className={styles.td}>R${(i.preco * i.quantidade).toFixed(2)}</td>
+                            <td className={styles.td}>
+                                <button className="btn btn-danger" onClick={()=>removeItem(index)}>Remover</button>
+                            </td>
                         </tr>
 
 
@@ -35,7 +43,7 @@ export function ListItems({ item, title, data, setData }) {
                         </tr>
                     }
                     <tr>
-                        <td><strong>Total: </strong> R${data.reduce((total, food)=>{
+                        <td><strong>Custos Totais: </strong> R${data.reduce((total, food) => {
                             return (total + food.preco * food.quantidade)
                         }, 0).toLocaleString()}</td>
                     </tr>

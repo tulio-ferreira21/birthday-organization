@@ -22,4 +22,4 @@ export function calculateTotal(key) {
     return data.reduce((total, item) => {
         return total + item.preco * item.quantidade
     }, 0)
-}
+} 
