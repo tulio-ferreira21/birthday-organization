@@ -51,14 +51,19 @@ export function ListItems({ item, title, data, setData }) {
                             <td className={styles.td}>{i.quantidade}</td>
                             <td className={styles.td}>R${i.preco}</td>
                             <td className={styles.td}>R${(i.preco * i.quantidade).toFixed(2)}</td>
-                            <td className={styles.td}>
+                            <td className={`${styles.td} d-flex gap-1`}>
+                                <button className="btn btn-success">
+                                    <i className="bi bi-pencil"></i>
+                                </button>
                                 <button className="btn btn-danger" onClick={() => {
                                     setAction('one')
                                     setIndex(index)
                                     setNameItem(i.nome)
                                     setConfirmDialog(true)
                                 }}
-                                >Remover</button>
+                                >
+                                    <i className="bi bi-trash"></i>
+                                </button>
                             </td>
                         </tr>
                     ))

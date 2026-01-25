@@ -51,14 +51,17 @@ export function ListConvidados({ title, data, setData }) {
                                     {i.nomeConvidado}
                                 </td>
                                 <td>
-                                    <div className="btns">
+                                    <div className="d-flex gap-1">
+                                        <button className="btn btn-success">
+                                            <i className='bi bi-pencil'></i>
+                                        </button>
                                         <button className="btn btn-danger" onClick={() => {
                                             setAction("one")
                                             setNomeConvidado(i.nomeConvidado)
                                             setIndex(index)
                                             setConfirmDialog(true)
                                         }}>
-                                            <b>Remover</b>
+                                            <i className="bi bi-trash"></i>
                                         </button>
                                     </div>
                                 </td>
@@ -75,7 +78,7 @@ export function ListConvidados({ title, data, setData }) {
                 </tbody>
                 {data.length > 0 && (
                     <div className={styles.removeAll}>
-                        <button className="btn btn-warning" onClick={()=>{
+                        <button className="btn btn-warning" onClick={() => {
                             setAction('all')
                             setNomeConvidado('Todos os convidados')
                             setConfirmDialog(true)
