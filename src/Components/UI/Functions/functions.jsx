@@ -1,10 +1,13 @@
-export function Quantity({ num }) {
+export function Quantity({ QuantidadeConvidados }) {
     return (
-        <p>Quantidade: {num ? `${num} Convidados` : "Nenhum convidado adicionado"}</p>
+        <p>Quantidade: {QuantidadeConvidados ?
+            `${QuantidadeConvidados} ${QuantidadeConvidados > 1 ? "convidados" : "convidado"}`
+            :
+            "Nenhum convidado adicionado"}</p>
     )
 }
 
-export function Cousts({ food , decoration, disposable }) {
+export function Cousts({ food, decoration, disposable }) {
     const total = food + decoration + disposable;
     return (
         <span>{total === 0 ? total : "Nenhum valor informado"}</span>

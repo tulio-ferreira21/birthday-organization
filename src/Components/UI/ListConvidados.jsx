@@ -1,24 +1,41 @@
 import styles from "./css/listitems.module.css"
 import { ConfirmDialog } from "./ConfirmDialog";
 import { useState } from "react"
+import EditItem from "./Functions/DialogEdit";
 export function ListConvidados({ title, data, setData }) {
     const [confirmDialog, setConfirmDialog] = useState(false)
-    const [index, setIndex] = useState([]);
+    const [index, setIndex] = useState(null);
     const [nomeConvidado, setNomeConvidado] = useState('')
-    const [action, setAction] = useState('')
+    const [action, setAction] = useState('');
+    const [itemEdit, setItemEdit] = useState(null)
+    const [editModal, setEditModal] = useState(false);
+
+    const item = "convidados"
     function ClearTable() {
-        localStorage.removeItem('convidados')
+        localStorage.removeItem(item)
         setData([])
     }
     function removeItem(index) {
         const newArray = data.filter((_, i) => i !== index);
         setData(newArray);
-        localStorage.setItem("convidados", JSON.stringify(newArray));
+        localStorage.setItem(item, JSON.stringify(newArray));
         setConfirmDialog(false)
     }
+    function handleEdit(itemEditado) {
+        const novaLista = [...data];
+        novaLista[index] = itemEditado;
 
+        setData(novaLista)
+        localStorage.setItem(item, JSON.stringify(novaLista))
+    }
     return (
         <div className={styles.wrapper}>
+            {editModal && <EditItem title={title}
+                fechar={() => setEditModal(false)}
+                item={itemEdit}
+                action={action}
+                handleAdd={handleEdit}
+            />}
             {confirmDialog && (
                 <ConfirmDialog
                     nomeItem={nomeConvidado}
@@ -52,7 +69,12 @@ export function ListConvidados({ title, data, setData }) {
                                 </td>
                                 <td>
                                     <div className="d-flex gap-1">
-                                        <button className="btn btn-success">
+                                        <button className="btn btn-success" onClick={() => {
+                                            setAction(item)
+                                            setIndex(index)
+                                            setItemEdit(i)
+                                            setEditModal(true)
+                                        }}>
                                             <i className='bi bi-pencil'></i>
                                         </button>
                                         <button className="btn btn-danger" onClick={() => {
@@ -83,7 +105,7 @@ export function ListConvidados({ title, data, setData }) {
                             setNomeConvidado('Todos os convidados')
                             setConfirmDialog(true)
                         }}>
-                            Remover {data.length} convidado(s)
+                            Remover {data.length} {data.length > 1 ? "convidados" : "convidado"}
                         </button>
                     </div>
                 )}

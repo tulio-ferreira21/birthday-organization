@@ -1,10 +1,12 @@
 import { ConfirmDialog } from "./ConfirmDialog";
 import styles from "./css/listitems.module.css"
 import { useState } from "react";
+import EditItem from "./Functions/DialogEdit";
 export function ListItems({ item, title, data, setData }) {
-    const [confirmDialog, setConfirmDialog] = useState(false)
-
-    const [index, setIndex] = useState([]);
+    const [confirmDialog, setConfirmDialog] = useState(false);
+    const [edit, setEdit] = useState(false)
+    const [itemEdit, setItemEdit] = useState(null)
+    const [index, setIndex] = useState(null);
     const [nameItem, setNameItem] = useState('')
     const [action, setAction] = useState('')
     function ClearTable() {
@@ -17,7 +19,13 @@ export function ListItems({ item, title, data, setData }) {
         localStorage.setItem(item, JSON.stringify(newArray));
         setConfirmDialog(false)
     }
+    function handleEdit(itemEditado){
+        const novaLista =  [...data];
+        novaLista[index] = itemEditado;
 
+        setData(novaLista)
+        localStorage.setItem(item, JSON.stringify(novaLista))
+    }
     return (
         <div className={styles.wrapper}>
             {confirmDialog && (
@@ -34,6 +42,13 @@ export function ListItems({ item, title, data, setData }) {
                     fechar={() => setConfirmDialog(false)}
                 />
             )}
+            {edit &&
+                <EditItem action={action} title={title} item={itemEdit} index={index} handleAdd={handleEdit} fechar={() => {
+                    setEdit(false)
+                    setIndex(null)
+                    setItemEdit(null)
+                }} />
+            }
             <table className={styles.table}>
                 <thead>
                     <tr>
@@ -52,7 +67,12 @@ export function ListItems({ item, title, data, setData }) {
                             <td className={styles.td}>R${i.preco}</td>
                             <td className={styles.td}>R${(i.preco * i.quantidade).toFixed(2)}</td>
                             <td className={`${styles.td} d-flex gap-1`}>
-                                <button className="btn btn-success">
+                                <button className="btn btn-success" onClick={() => {
+                                    setAction("item")
+                                    setEdit(true)
+                                    setItemEdit(i)
+                                    setIndex(index)
+                                }}>
                                     <i className="bi bi-pencil"></i>
                                 </button>
                                 <button className="btn btn-danger" onClick={() => {
@@ -87,7 +107,7 @@ export function ListItems({ item, title, data, setData }) {
                             setNameItem("Todos itens")
                             setConfirmDialog(true)
                         }}>
-                            Remover {data.length} Alimento(s)
+                            Remover {data.length} {data.length > 1 ? "itens" : "item"}
                         </button>
                     </div>
                 )}

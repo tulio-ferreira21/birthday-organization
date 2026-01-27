@@ -21,7 +21,7 @@ export default function Home() {
                 <Link to="/list/convidados" className={styles.link}>
                     <div className={styles.card}>
                         <h4>Lista de Convidados</h4>
-                        <Quantity num={qtd} />
+                        <Quantity QuantidadeConvidados={qtd} />
                     </div>
                 </Link>
                 <div className={styles.containerList}>
