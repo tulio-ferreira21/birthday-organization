@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Timer } from './functions'
 export default function EditItem({ action, title, item, fechar, handleAdd }) {
     const [success, setSuccess] = useState('')
     const [error, setError] = useState('')
@@ -36,6 +35,7 @@ export default function EditItem({ action, title, item, fechar, handleAdd }) {
                 ...item,
                 nomeConvidado,
             });
+            setSuccess('')
             fechar();
         }
     }
