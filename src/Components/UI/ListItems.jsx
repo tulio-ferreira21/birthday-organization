@@ -12,6 +12,7 @@ export function ListItems({ item, title, data, setData }) {
     function ClearTable() {
         localStorage.removeItem(item)
         setData([])
+        setConfirmDialog(false)
     }
     function removeItem(index) {
         const newArray = data.filter((_, i) => i !== index);
@@ -19,8 +20,8 @@ export function ListItems({ item, title, data, setData }) {
         localStorage.setItem(item, JSON.stringify(newArray));
         setConfirmDialog(false)
     }
-    function handleEdit(itemEditado){
-        const novaLista =  [...data];
+    function handleEdit(itemEditado) {
+        const novaLista = [...data];
         novaLista[index] = itemEditado;
 
         setData(novaLista)

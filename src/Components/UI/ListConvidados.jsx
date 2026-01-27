@@ -14,6 +14,7 @@ export function ListConvidados({ title, data, setData }) {
     function ClearTable() {
         localStorage.removeItem(item)
         setData([])
+        setConfirmDialog(false)
     }
     function removeItem(index) {
         const newArray = data.filter((_, i) => i !== index);
