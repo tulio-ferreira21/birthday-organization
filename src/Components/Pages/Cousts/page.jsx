@@ -4,9 +4,9 @@ import PizzaDescartaveis from "../../UI/Graphics/Components/charts/GraphDescarta
 import PizzaGeral from "../../UI/Graphics/Components/charts/GraphGeral";
 import styles from "./cousts.module.css"
 export default function Cousts() {
-    const comidas = JSON.parse(localStorage.getItem('comidas')) || 0;
-    const descartaveis = JSON.parse(localStorage.getItem('descartaveis')) || 0
-    const decoracoes = JSON.parse(localStorage.getItem('decoracao')) || 0
+    const comidas = JSON.parse(localStorage.getItem('comidas')) || [];
+    const descartaveis = JSON.parse(localStorage.getItem('descartaveis')) || []
+    const decoracoes = JSON.parse(localStorage.getItem('decoracao')) || []
     return (
         <div className="m-auto">
             <div className={styles.header}>
