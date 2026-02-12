@@ -1,55 +1,136 @@
-# Terezinha’s Birthday Planner
+# Birthday Organization
 
-A birthday planning application built with **React** to organize all aspects of **Terezinha’s birthday party**.  
-The app helps manage guest lists, food, disposable items, decorations, and calculates total costs based on **price × quantity**.
+Birthday Organization is a Single Page Application (SPA) developed with React (JavaScript) to help users plan and manage birthday events. The platform allows full control over guest lists, item lists, and total event costs, including a visual dashboard with charts for financial analysis.
 
-This project was created for a real event and focuses on clean component structure, state-driven logic, and data persistence using **Supabase**.
+---
+
+## About the Project
+
+Birthday Organization was built to simplify birthday planning by organizing essential elements such as guests, food, decorations, and disposable items.  
+
+The application calculates costs automatically and provides a dashboard to visualize spending distribution across categories.
+
+All data is stored using the browser's `localStorage`, allowing persistence without a back-end.
 
 ---
 
 ## Features
 
 - Guest list management  
-- Food list with quantity and price  
-- Disposable items list  
-- Decorations list  
-- Automatic total cost calculation  
-- Modal-based item creation  
-- Dynamic tables for each category  
-- Data persistence with Supabase  
-- Scoped styling using CSS Modules  
+- Food list management  
+- Decoration list management  
+- Disposable items list management  
+- Add, edit, and remove items  
+- Automatic calculation of item total (price × quantity)  
+- Total cost per category  
+- Overall total event cost  
+- Dashboard with cost comparison charts  
+- Confirmation dialog before deleting items  
+- Modular and organized component structure  
 
 ---
 
-## Main Concepts
+## Financial Control System
 
-- Functional components  
-- React Hooks (`useState`, `useEffect`)  
-- Controlled form inputs  
-- Conditional rendering  
-- Component separation (avoiding unnecessary re-mounts)  
-- Modal with overlay and click-outside-to-close behavior  
-- Rendering lists with `map`  
-- Table-based layouts  
-- Cost calculation logic  
-- Supabase integration  
-- CSS Modules for isolated styles  
+Each item includes:
+
+- Name  
+- Quantity  
+- Unit price  
+
+The system automatically calculates:
+
+- Total per item  
+- Total per category  
+- Overall total event budget  
+
+This allows users to maintain full financial control of the event.
 
 ---
 
-## Project Structure (simplified)
+## Dashboard
 
-```text
-src/
-├── components/
-│   ├── ListConvidados.jsx
-│   ├── AddItemModal.jsx
-│
-├── pages/
-│   └── Invites.jsx
-│
-├── services/
-│   └── supabaseClient.js
-│
-├── css/
-│   └── listitems.module.css
+The application includes a graphical dashboard that visually represents:
+
+- Total cost of Food  
+- Total cost of Decorations  
+- Total cost of Disposables  
+- Overall comparison between categories  
+
+This helps users quickly identify which category consumes more of the budget.
+
+---
+
+## Technologies Used
+
+- React  
+- React Router DOM  
+- JavaScript (ES6+)  
+- CSS Modules  
+- Bootstrap  
+- localStorage  
+
+---
+
+## Project Structure
+
+```txt
+  src/
+┣ Components/
+┃ ┣ Home/
+┃ ┣ Pages/
+┃ ┣ Routes/
+┃ ┗ UI/
+┣ Images/
+┣ css/
+┣ App.jsx
+┗ index.jsx
+```
+
+The project is organized into reusable components, pages, routing structure, and UI utilities to improve scalability and maintainability.
+
+---
+
+## How to Run the Project
+
+1. Clone the repository:
+```bash
+  git clone https://github.com/your-username/birthday-organization.git
+```
+
+2. Navigate into project folder and install dependencies
+```bash
+  # navigate into project folder
+  cd birthday-organization
+  # install dependencies
+  npm i
+  # or npm install
+```
+3. Start the development server
+```bash
+  npm start
+```
+
+
+---
+
+## Learning Objectives
+
+This project was developed to practice:
+
+- React component architecture  
+- State management  
+- Data persistence using localStorage  
+- Dynamic calculations  
+- Modular code organization  
+- SPA routing  
+- Data visualization with charts  
+
+---
+
+## Author
+
+Túlio Diego  
+Front-end Developer  
+LinkedIn: https://linkedin.com/in/tuliodiego  
+GitHub: https://github.com/tulio-ferreira21
