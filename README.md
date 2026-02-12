@@ -60,6 +60,35 @@ The application includes a graphical dashboard that visually represents:
 This helps users quickly identify which category consumes more of the budget.
 
 ---
+## Charts and Data Visualization
+
+The application includes a financial dashboard built with:
+
+- Chart.js  
+- react-chartjs-2  
+
+Pie charts are used to visually represent the distribution of costs within each category (Food, Decorations, and Disposables), as well as overall spending comparison.
+
+Each chart dynamically maps:
+
+- Item names as labels  
+- Total item cost (price × quantity) as dataset values  
+
+Example logic used for chart generation:
+
+- Labels are generated from item names  
+- Dataset values are calculated by multiplying price and quantity  
+- Custom color palettes and default chart options are centralized for consistency  
+
+This approach allows real-time financial visualization as items are added, edited, or removed.
+
+---
+
+## Additional Dependencies
+
+- chart.js  
+- react-chartjs-2  
+
 
 ## Technologies Used
 
@@ -68,7 +97,6 @@ This helps users quickly identify which category consumes more of the budget.
 - JavaScript (ES6+)  
 - CSS Modules  
 - Bootstrap  
-- localStorage  
 
 ---
 
