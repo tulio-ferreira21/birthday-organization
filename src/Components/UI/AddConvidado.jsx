@@ -1,4 +1,3 @@
-// AddConvidadoModal.jsx
 export function AddConvidadoModal({
     nomeConvidado,
     setConvidadoNome,
