@@ -22,7 +22,7 @@ export default function Invites() {
             Timer(setError)
             return;
         }
-        setSucess(`Usuário ${nomeConvidado} adicionado`);
+        setSucess(`Convidado ${nomeConvidado} adicionado`);
         Timer(setSucess)
         setConvidados(prev => [...prev, { nomeConvidado }])
         setConvidadoNome('')
